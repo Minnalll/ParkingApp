@@ -39,10 +39,10 @@ public class Parking {
 	@Column(name = "In_Date")
 	private LocalDate inDate;
 	@Size(min=1, message = "Vehicle type should be minimum of 1 chars")
-	@Column(name = "Vehicle_Type")
+	@Column(name = "Vehicle_Type", nullable = false)
 	private String vehicleType;
 	@Size(min=4, message = "Vehicle number should be minimum of 4 chars")
-	@Column(name = "Vehicle_Number")
+	@Column(name = "Vehicle_Number", nullable = false)
 	private String vehicleNumber;
 //	@JsonFormat(pattern = "hh:mm:ss")
 	@Column(name = "In_Time")
