@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,9 +39,8 @@ public class ParkingController {
 	}
 	
 	@PostMapping("/create")
-	public ResponseEntity<Parking> create( @Valid @RequestBody  Parking parking){	
-		ResponseEntity<Parking> create = service.create(parking);
-		return create;	
+	public ResponseEntity<Parking> create(@RequestBody  @Valid Parking parking){	
+		return service.create(parking);	
 	}
 	
 //	@PostMapping("/create")

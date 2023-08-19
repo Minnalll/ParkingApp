@@ -16,7 +16,7 @@ import org.springframework.web.context.request.WebRequest;
 public class ApplicationExceptionHandler {
 
 
-//    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Map<String, String> handleInvalidArgument(MethodArgumentNotValidException ex) {
         Map<String, String> errorMap = new HashMap<>();
@@ -42,7 +42,7 @@ public class ApplicationExceptionHandler {
 		return new ResponseEntity<ErrorDetails>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
-//	@ResponseStatus(HttpStatus.NOT_FOUND)
+	@ResponseStatus(HttpStatus.NOT_FOUND)
 	@ExceptionHandler(ResourceNotFoundException.class) 
 	public final ResponseEntity<ErrorDetails> handleUserNotFoundException(Exception ex, WebRequest request)
 			throws Exception {

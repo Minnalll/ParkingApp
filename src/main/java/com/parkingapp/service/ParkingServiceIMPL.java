@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -36,16 +37,16 @@ public class ParkingServiceIMPL implements IParkingService {
 
 	@Override
 	public ResponseEntity<Parking> create(Parking parking) {
-		parking.setInDate(LocalDate.now());
-		parking.setInTime(LocalDateTime.now());
-		 Parking save = repo.save(parking);	
-		 	
-			URI location = ServletUriComponentsBuilder.fromCurrentRequest()
-						.path("/{id}")
-						.buildAndExpand(save.getSNo())
-						.toUri();
-			
-		 return ResponseEntity.created(location).body(save);
+		
+			parking.setInDate(LocalDate.now());
+			parking.setInTime(LocalDateTime.now());
+			 Parking save = repo.save(parking);	
+			 	
+				URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+							.path("/{id}")
+							.buildAndExpand(save.getSNo())
+							.toUri();
+				return ResponseEntity.created(location).body(save);	
 	}
 
 
